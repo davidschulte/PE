@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+	int n,m,k;
+	printf("Please enter n: ");
+	scanf("%d", &n);
+	printf("Please enter m: ");
+	scanf("%d", &m);
+	printf("Please enter k: ");
+	scanf("%d", &k);
+	printf("%d", 2*k);
+	return 0;
+
+
+
+	char *mem_alloc;
+	mem_alloc = 
+	
+
+	if(mem_alloc==NULL)
+	{
+		printf("Couldn't able to allocate requested memory\n");
+	}
+	else
+	{
+	}
+	int a[m][n];
+
+}
+
