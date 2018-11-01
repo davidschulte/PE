@@ -6,7 +6,7 @@
 int main()
 {
 	
-	#pragma omp parallel 
+	#pragma omp parallel num_threads(2)
 	{
 		int all = omp_get_num_threads();
 		int id = omp_get_thread_num();
