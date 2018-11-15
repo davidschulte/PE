@@ -28,9 +28,8 @@ if(abortParallelCheck == 0)
 
 
 
-int nb = 2;
-int n;
-printf("Please enter n: ");
+int nb = 8;
+int n = 10000000;
 scanf("%d", &n);
 
 
