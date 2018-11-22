@@ -62,7 +62,7 @@ for(int i = 0; i < n; i++)
 		W[i*nb+j] = 0;
 
 	__m128d vi1 = _mm_load_pd1(&V[i*nb]); 			//V i
-	__m128d m1_1 = _mm_set_pd(M[0][1],M[0][0];		//M row 1
+	__m128d m1_1 = _mm_set_pd(M[0][1],M[0][0]);		//M row 1
 	__m128d m1_2 = _mm_set_pd(M[0][3],M[0][2]);
 	__m128d vi1m1_1 = _mm_mul_pd(vi1,m1_1);
 	__m128d vi1m1_2 = _mm_mul_pd(vi1,m1_2);
@@ -89,12 +89,12 @@ for(int i = 0; i < n; i++)
 	__m128d wi_1_p1 = _mm_add_pd(vi1m1_1,vi2m2_1);
 	__m128d wi_1_p2 = _mm_add_pd(vi3m3_1,vi4m4_1);
 	__m128d wi_1 = _mm_add_pd(wi_1_p1, wi_1_p2);
-	_mm_steam_pd(&W[i*nb], wi_1);
+	_mm_stream_pd(&W[i*nb], wi_1);
 
         __m128d wi_2_p1 = _mm_add_pd(vi1m1_2,vi2m2_2);
         __m128d wi_2_p2 = _mm_add_pd(vi3m3_2,vi4m4_2);
         __m128d wi_2 = _mm_add_pd(wi_2_p1, wi_2_p2);
-        _mm_steam_pd(&W[i*nb+2], wi_1);
+        _mm_stream_pd(&W[i*nb+2], wi_2);
 
 	
 	printf("Wrote result W[%d]: %f\n", i, W[i]);
