@@ -60,23 +60,14 @@ for(int i = 0; i < n; i++)
 {
 	W[i*2] = 0;
 	W[i*2+1] = 0;
-	printf("Hallo! i = %d\n", i);
 	__m128d vi1 = _mm_load_pd1(&V[i*2]); 			// load V_i1 into both SSE elements
-        printf("loaded V1\n");
 	__m128d m1 = _mm_set_pd(M[0][1],M[0][0]); 		// set first row of M
-        printf("Set first row M\n");
 	__m128d vi1m1 = _mm_mul_pd(vi1,m1); 			// multiply V_i1 with row of M
-        printf("mult\n");
 	__m128d vi2 = _mm_load_pd1(&V[i*2+1]); 			// load V(i,2) into both SSE elements
-        printf("loaded V1\n");
 	__m128d m2 = _mm_set_pd(M[1][1],M[1][0]); 		// set second row of M
-        printf("second row M\n");
 	__m128d vi2m2 = _mm_mul_pd(vi2,m2); 			// multiply V_i2 with row of M
-        printf("mult\n");
 	__m128d wi = _mm_add_pd(vi1m1,vi2m2); 			// add up row of W
-        printf("add row up\nNext %f\n", W[i]);
-	_mm_stream_pd(&W[i*2], wi); 				// write result to W using non-temporal stores
-	printf("Wrote result W[%d]: %f\n", i, W[i]);
+	_mm_stream_pd(&W[i*2], wi); 				// write result to W using non-temporal store
 }
 
 

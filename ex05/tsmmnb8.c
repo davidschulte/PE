@@ -101,8 +101,7 @@ for(int i = 0; i < n; i++)
         __m128d vi4m4_2 = _mm_mul_pd(vi4,m4_2);
         __m128d vi4m4_3 = _mm_mul_pd(vi4,m4_3);
         __m128d vi4m4_4 = _mm_mul_pd(vi4,m4_4);
-
-        
+       
         __m128d vi5 = _mm_load_pd1(&V[i*nb+4]);
         __m128d m5_1 = _mm_set_pd(M[4][1],M[4][0]);
         __m128d m5_2 = _mm_set_pd(M[4][3],M[4][2]);
@@ -143,7 +142,6 @@ for(int i = 0; i < n; i++)
         __m128d vi8m8_2 = _mm_mul_pd(vi8,m8_2);
         __m128d vi8m8_3 = _mm_mul_pd(vi8,m8_3);
         __m128d vi8m8_4 = _mm_mul_pd(vi8,m8_4);
-
 
 
 	__m128d wi_1_p1_1 = _mm_add_pd(vi1m1_1,vi2m2_1);
