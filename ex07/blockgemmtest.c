@@ -19,15 +19,13 @@ double* tmpC = malloc(n*n*sizeof(double));
 double cij;
 
 
-  for(int i = 0; i < n; i++)
-  {
-    for(int j = 0; j < n; j++)
-      A[i+j*n] = ((double)j)+1.;
-  }
+for(int i = 0; i < n; i++)
+	for(int j = 0; j < n; j++)
+		A[i+j*n] = ((double)j)+1.;
 
-  for(int i = 0; i < n; i++)
-    for(int j = 0; j < n; j++)
-      B[i+j*n] =((double) i)*n+((double)j);
+for(int i = 0; i < n; i++)
+	for(int j = 0; j < n; j++)
+		B[i+j*n] =((double) i)*n+((double)j);
 
 
 
@@ -37,7 +35,7 @@ for(int i = 0; i < n; i += BLOCK)
 	{
 		for(int jc = 0; jc < BLOCK; jc++)
 			for(int ic = 0; ic < BLOCK; ic++)
-				tmpC[i+j*BLOCK] = 0;
+				tmpC[ic+jc*BLOCK] = 0;
 
 		for(int k = 0; k < n; k += BLOCK)
 		{
@@ -58,16 +56,30 @@ for(int i = 0; i < n; i += BLOCK)
 		}
 		for(int jc  = 0; jc < BLOCK; jc++)
 			for(int ic = 0; ic < BLOCK; ic++)
-				C[i+ic+(j+jc)*n] = tmpC[ic+jc*BLOCK];
+				C[i+ic+j*n+jc*BLOCK] = tmpC[ic+jc*BLOCK];
 	}					
 }
 
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < n; j++)
-			printf(" %g", C[i*n + j]);
-		printf("\n");
-	}
+for (int i = 0; i < n; i++)
+{
+        for (int j = 0; j < n; j++)
+                printf(" %f", A[i + j*n]);
+        printf("\n");
+}
+
+for (int i = 0; i < n; i++)
+{
+        for (int j = 0; j < n; j++)
+                printf(" %f", B[i + j*n]);
+        printf("\n");
+}
+
+for (int i = 0; i < n; i++)
+{
+	for (int j = 0; j < n; j++)
+		printf(" %f", C[i + j*n]);
+	printf("\n");
+}
 
 
 free(A);
