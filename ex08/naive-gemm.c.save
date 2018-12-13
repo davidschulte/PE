@@ -1,0 +1,43 @@
+#include <stdio.h>
+#define BLOCK 16
+
+void recursive_gemm(const int n; const int stride, const double *restrict A, cont double *restrict B, double *restrict C)
+{
+	if(n > BLOCK)
+	{
+		const int h = n / 2;
+		
+		recursive_gemm(h, stride, &A[0+0*stride], &B[0+0*stride], &C[0+0*stride]);
+                recursive_gemm(h, stride, &A[h+0*stride], &B[0+0*stride], &C[h+0*stride]);
+
+                recursive_gemm(h, stride, &A[0+h*stride], &B[h+0*stride], &C[0+0*stride]);
+                recursive_gemm(h, stride, &A[h+h*stride], &B[h+0*stride], &C[h+0*stride]);
+
+                recursive_gemm(h, stride, &A[0+h*stride], &B[h+h*stride], &C[0+h*stride]);
+                recursive_gemm(h, stride, &A[h+h*stride], &B[h+h*stride], &C[h+h*stride]);
+
+                recursive_gemm(h, stride, &A[0+0*stride], &B[0+h*stride], &C[0+h*stride]);
+                recursive_gemm(h, stride, &A[h+0*stride], &B[0+h*stride], &C[h+h*stride]);
+
+		return;
+	}
+	
+	int tmpA[BLOCK*BLOCK];
+	int tmpB[BLOCK*BLOCK];
+	int tmpC[BLOCK*BLOCK];
+
+	for(int i = 0; i < BLOCK; i++)
+		for(int j = 0; j < BLOCK; j++)
+		{
+			tmpA[i+j*BLOCK] = *
+
+	double cj;
+	for(int j = 0; j < BLOCK; j++)
+		for(int i = 0; i < BLOCK; i++)
+		{
+			cij = 0;
+			for(int k = 0; k < BLOCK; k++)
+				cij += tmpA[i+k*BLOCK] * tmpB[k+j*BLOCK];
+			tmpC[i+j*BLOCK] = cij;
+		}
+
