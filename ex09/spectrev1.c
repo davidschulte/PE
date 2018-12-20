@@ -68,6 +68,7 @@ char leak_byte(const char* data, int data_size, int idx)
       // but we are interested in the last iteration (i=49) where we use the leak index.
       // This will have a cache effect even when the condition is false!
       int cur_idx = (i+1) % 10 != 0 ? safe_idx : idx;
+	printf("i = %d:\t cur_idx = %d\n", i, cur_idx);
       if( cur_idx < *data_size_in_memory )
         force_read(&timing_array[data[cur_idx] * stride]);
     }
